@@ -21,6 +21,8 @@ namespace KeyForgeAnalyzer
         {
             services.AddHttpClient<KeyForgeClient>(client => client.BaseAddress = new Uri(Configuration["KeyforgeClient"]));
 
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -37,7 +39,8 @@ namespace KeyForgeAnalyzer
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
