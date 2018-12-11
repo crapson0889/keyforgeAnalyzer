@@ -4,10 +4,10 @@ namespace KeyForgeAnalyzer.Models
 {
     public class DeckResultObject
     {
-        public Card[] Cards { get; set; }
+        public Deck Deck { get; set; }
 
-        public int CreatureCount => (from card in Cards where card.CardType == "Creature" select card).Count();
+        public int CreatureCount => (from card in Deck.Cards.AllCards where card.CardType == "Creature" select card).Count();
 
-        public int AmberCount => (from card in Cards where card.Amber > 0 select card).Count();
+        public int AmberCount => (from card in Deck.Cards.AllCards where card.Amber > 0 select card).Count();
     }
 }

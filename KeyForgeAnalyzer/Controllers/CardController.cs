@@ -19,10 +19,10 @@ namespace KeyForgeAnalyzer.Controllers
         }
 
         [HttpGet]
-        public async Task<string> Get() 
+        public async Task<string> Get(string id = "b5c2b5dc-09e7-4a39-a760-ea6d862e425e") 
         {
             // Get page data
-            var page = await _client.GetCards("b5c2b5dc-09e7-4a39-a760-ea6d862e425e");
+            var page = await _client.GetCards(id);
 
             var jsonObject = page.GetJsonObject("{\"decks\":");
 
@@ -31,7 +31,7 @@ namespace KeyForgeAnalyzer.Controllers
 
             var result = new DeckResultObject()
             {
-                Cards = deckData.Decks.GetDeck.Deck.Cards.AllCards
+                Deck = deckData.Decks.GetDeck.Deck
             };
 
             return JsonConvert.SerializeObject(result);
