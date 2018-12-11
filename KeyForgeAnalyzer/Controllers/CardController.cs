@@ -31,7 +31,7 @@ namespace KeyForgeAnalyzer.Controllers
 
             var result = new DeckResultObject()
             {
-                cards = deckData.Decks.GetDeck.Deck.Cards.AllCards
+                Cards = deckData.Decks.GetDeck.Deck.Cards.AllCards
             };
 
             return JsonConvert.SerializeObject(result);
